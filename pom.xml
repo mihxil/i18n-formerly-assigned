@@ -42,7 +42,7 @@
   <scm>
     <connection>scm:git:git://github.com/mihxil/i18n-formally-assigned.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/mihxil/i18n-formally-assigned.git</developerConnection>
-    <url>https://github.com/mihxil/i18n-formally-assinged</url>
+    <url>https://github.com/mihxil/i18n-formally-assigned</url>
     <tag>HEAD</tag>
   </scm>
 
