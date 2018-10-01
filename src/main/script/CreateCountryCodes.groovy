@@ -18,7 +18,7 @@ void createClass(String path) {
 
         JFieldVar name = field(JMod.PRIVATE | JMod.FINAL, String.class, "name")
         JFieldVar locale = field(JMod.PRIVATE | JMod.FINAL, Locale.class, "locale")
-        JFieldVar currency = field(JMod.PRIVATE | JMod.FINAL, Currency.class, "currency")
+        //JFieldVar currency = field(JMod.PRIVATE | JMod.FINAL, Currency.class, "currency")
         JClass stringList = model.ref(List.class).narrow(String.class)
 
         JFieldVar formerCodes = field(JMod.PRIVATE | JMod.FINAL,stringList, "formerCodes")
@@ -33,7 +33,7 @@ void createClass(String path) {
             body().with {
                 assign(JExpr._this().ref(name), param(String.class, "name"))
                 assign(JExpr._this().ref(locale), param(Locale.class, "locale"))
-                assign(JExpr._this().ref(currency), param(Currency.class, "currency"))
+                //assign(JExpr._this().ref(currency), param(Currency.class, "currency"))
                 assign(JExpr._this().ref(formerCodes), param(stringList, "formerCodes"))
                 assign(JExpr._this().ref(validity), param(range, "validity"))
             }
@@ -49,11 +49,19 @@ void createClass(String path) {
             annotate(Override.class)
             body()._return(locale)
         }
-        method(JMod.PUBLIC, Currency.class, "getCurrency").with {
+
+        JClass enumClass = model.ref(Region.Type.class)
+
+
+        method(JMod.PUBLIC, Region.Type.class, "getType").with {
+            annotate(Override.class)
+            body()._return(enumClass.staticRef(Region.Type.COUNTRY.name()))
+        }
+        /*method(JMod.PUBLIC, Currency.class, "getCurrency").with {
             annotate(Override.class)
             body()._return(currency)
         }
-
+*/
         method(JMod.PUBLIC, stringList, "getFormerCodes").with {
             body()._return(formerCodes)
         }
@@ -87,7 +95,7 @@ void createClass(String path) {
 
                     enumConstant(th0).with {
                         arg(JExpr.lit(td0))
-                        arg(JExpr._null())
+                        //arg(JExpr._null())
                         arg(JExpr._null())
                         arg(asList)
 
