@@ -12,16 +12,20 @@ void createClass(String path) {
 
     JCodeModel model = new JCodeModel()
 
-
+    JClass enumClass = model.ref(Enum.class)
     model._class("org.meeuw.i18n.FormallyAssignedCode", ClassType.ENUM).with {
         _implements(Region.class)
 
-        JFieldVar name = field(JMod.PRIVATE | JMod.FINAL, String.class, "name")
+        javadoc()
+                .append("This class is automaticly generated from " + url)
+                .append("It defined all know ISO 3166-3 codes for former countries")
+
+        JFieldVar name = field(JMod.PRIVATE | JMod.FINAL, String.class, "nameInEnglish")
         JFieldVar locale = field(JMod.PRIVATE | JMod.FINAL, Locale.class, "locale")
         //JFieldVar currency = field(JMod.PRIVATE | JMod.FINAL, Currency.class, "currency")
         JClass stringList = model.ref(List.class).narrow(String.class)
 
-        JFieldVar formerCodes = field(JMod.PRIVATE | JMod.FINAL,stringList, "formerCodes")
+        JFieldVar formerCodes = field(JMod.PRIVATE | JMod.FINAL, stringList, "formerCodes")
 
         JClass year = model.ref(Year.class)
         JClass range = model.ref(Range.class).narrow(year)
@@ -44,18 +48,26 @@ void createClass(String path) {
         method(JMod.PUBLIC, String.class, "getName").with {
             annotate(Override.class)
             body()._return(name)
+            javadoc().append("Returns the name of this region (in english)")
+
         }
         method(JMod.PUBLIC, Locale.class, "toLocale").with {
             annotate(Override.class)
             body()._return(locale)
+            javadoc().append("Returns the locale associated with this country. This may not always be possible, but many countries are associated with a language, and other locale specific settings")
         }
 
-        JClass enumClass = model.ref(Region.Type.class)
+        JMethod n = getMethod("name")
+        method(JMod.PUBLIC, String.class, "getISO3166_3_Code").with {
+            body()._return(enumClass.staticInvoke())
+        }
+
 
 
         method(JMod.PUBLIC, Region.Type.class, "getType").with {
             annotate(Override.class)
             body()._return(enumClass.staticRef(Region.Type.COUNTRY.name()))
+            javadoc().append("All formally assigned countries are {@link Region.Type.COUNTRY}")
         }
         /*method(JMod.PUBLIC, Currency.class, "getCurrency").with {
             annotate(Override.class)
@@ -64,6 +76,7 @@ void createClass(String path) {
 */
         method(JMod.PUBLIC, stringList, "getFormerCodes").with {
             body()._return(formerCodes)
+            javadoc().append("Returns a list of all official codes this country <em>used to have</em>")
         }
 
         method(JMod.PUBLIC, range, "getValidity").with {
@@ -82,14 +95,14 @@ void createClass(String path) {
 
                 if (td0id != null && td0id.length() > 0) {
                     String[] td2 = it.td[2].text().trim().split("[^\\d]", 3) // validity
-                    Integer year1= Integer.parseInt(td2[0]);
-                    Integer year2= Integer.parseInt(td2[1]);
+                    Integer year1 = Integer.parseInt(td2[0]);
+                    Integer year2 = Integer.parseInt(td2[1]);
                     String th0 = it.th[0].span.text() // code
                     String td3 = it.td[3].text()  // new country name
 
                     JInvocation asList = model.ref(Arrays.class)
-                                .staticInvoke("asList")
-                    it.td[1].span.each{
+                            .staticInvoke("asList")
+                    it.td[1].span.each {
                         asList.arg(it.text())
                     } // former codes
 
@@ -107,7 +120,9 @@ void createClass(String path) {
                 }
             }
         }
+        methods();
     }
+
     File dir = new File(path)
     dir.mkdirs()
 
