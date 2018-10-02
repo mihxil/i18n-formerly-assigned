@@ -13,7 +13,7 @@ void createClass(String path) {
     JCodeModel model = new JCodeModel()
     JClass typeClass = model.ref(Region.Type.class)
 
-    model._class("org.meeuw.i18n.FormallyAssignedCountryCode", ClassType.ENUM).with {
+    model._class("org.meeuw.i18n.FormerlyAssignedCountryCode", ClassType.ENUM).with {
         _implements(Region.class)
 
         javadoc()

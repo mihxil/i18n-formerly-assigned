@@ -40,9 +40,9 @@
   </properties>
 
   <scm>
-    <connection>scm:git:git://github.com/mihxil/i18n-formally-assigned.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/mihxil/i18n-formally-assigned.git</developerConnection>
-    <url>https://github.com/mihxil/i18n-formally-assigned</url>
+    <connection>scm:git:git://github.com/mihxil/i18n-formerly-assigned.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/mihxil/i18n-formerly-assigned.git</developerConnection>
+    <url>https://github.com/mihxil/i18n-formerly-assigned</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -154,7 +154,7 @@
               <scriptpath>
                 <element>${basedir}/src/main/script</element>
               </scriptpath>
-              <source>${project.basedir}/src/main/script/CreateFormallyAssignedCountryCodes.groovy</source>
+              <source>${project.basedir}/src/main/script/CreateFormerlyAssignedCountryCodes.groovy</source>
               <properties>
                 <path>${project.build.directory}/generated-sources</path>
               </properties>
