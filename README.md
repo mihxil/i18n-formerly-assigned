@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mihxil/i18n-formerly-assigned.svg?)](https://travis-ci.org/mihxil/i18n-formally-assigned)
+[![Build Status](https://travis-ci.org/mihxil/i18n-formerly-assigned.svg?)](https://travis-ci.org/mihxil/i18n-formerly-assigned)
 [![Maven Central](https://img.shields.io/maven-central/v/org.meeuw/i18n-formerly-assigned.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22org.meeuw%22)
 
 # i18n-formerly-assigned
