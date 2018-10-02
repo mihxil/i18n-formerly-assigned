@@ -11,8 +11,7 @@ void createClass(String path) {
 
 
     JCodeModel model = new JCodeModel()
-    model.ref(Region.class)
-    JClass enumClass  = model.ref(Enum.class)
+    JClass typeClass = model.ref(Region.Type.class)
 
     model._class("org.meeuw.i18n.FormallyAssignedCountryCode", ClassType.ENUM).with {
         _implements(Region.class)
@@ -63,7 +62,7 @@ void createClass(String path) {
 
         method(JMod.PUBLIC, Region.Type.class, "getType").with {
             annotate(Override.class)
-            body()._return(enumClass.staticRef(Region.Type.COUNTRY.name()))
+            body()._return(typeClass.staticRef(Region.Type.COUNTRY.name()))
             javadoc().append("All formally assigned countries are {@link Region.Type.COUNTRY}")
         }
         /*method(JMod.PUBLIC, Currency.class, "getCurrency").with {
