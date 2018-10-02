@@ -33,7 +33,7 @@
 
 
   <properties>
-    <nv-i18n.version>1.24-SNAPSHOT</nv-i18n.version>
+    <nv-i18n.version>1.23</nv-i18n.version>
     <junit.version>4.12</junit.version>
     <mockito.version>2.22.0</mockito.version>
     <groovy.version>2.5.2</groovy.version>
@@ -182,10 +182,12 @@
             <artifactId>nv-i18n</artifactId>
             <version>${nv-i18n.version}</version>
           </dependency>
+           <dependency>
+            <groupId>org.meeuw</groupId>
+            <artifactId>i18n-formerly-assigned</artifactId>
+            <version>${project.version}</version>
+          </dependency>
         </dependencies>
-
-
-
       </plugin>
     </plugins>
   </build>

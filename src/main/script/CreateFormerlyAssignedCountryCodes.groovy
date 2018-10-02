@@ -1,5 +1,4 @@
 import com.google.common.collect.Range
-import com.neovisionaries.i18n.Region
 import com.sun.codemodel.internal.*
 
 import java.time.Year
@@ -11,14 +10,16 @@ void createClass(String path) {
 
 
     JCodeModel model = new JCodeModel()
-    JClass typeClass = model.ref(Region.Type.class)
+
+    JClass region = model.ref("com.neovisionaries.i18n.Region")
+    JClass regionType = model.ref("com.neovisionaries.i18n.Region.Type")
 
     model._class("org.meeuw.i18n.FormerlyAssignedCountryCode", ClassType.ENUM).with {
-        _implements(Region.class)
+        _implements(region)
 
         javadoc()
                 .append("This class is automaticly generated from " + url)
-                .append("It defined all know ISO 3166-3 codes for former countries")
+                .append("It defines all known <a href='https://www.iso.org/standard/63547.html'>ISO 3166-3</a> codes for former countries")
 
         JFieldVar name = field(JMod.PRIVATE | JMod.FINAL, String.class, "nameInEnglish")
         JFieldVar locale = field(JMod.PRIVATE | JMod.FINAL, Locale.class, "locale")
@@ -60,9 +61,9 @@ void createClass(String path) {
             javadoc().append("Returns the ISO 3166-3 code for this formal country")
         }
 
-        method(JMod.PUBLIC, Region.Type.class, "getType").with {
+        method(JMod.PUBLIC, regionType, "getType").with {
             annotate(Override.class)
-            body()._return(typeClass.staticRef(Region.Type.COUNTRY.name()))
+            body()._return(regionType.staticRef("COUNTRY"))
             javadoc().append("All formally assigned countries are {@link Region.Type.COUNTRY}")
         }
         /*method(JMod.PUBLIC, Currency.class, "getCurrency").with {
