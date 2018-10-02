@@ -11,9 +11,10 @@ void createClass(String path) {
 
 
     JCodeModel model = new JCodeModel()
+    model.ref(Region.class)
+    JClass enumClass  = model.ref(Enum.class)
 
-    JClass enumClass = model.ref(Enum.class)
-    model._class("org.meeuw.i18n.FormallyAssignedCode", ClassType.ENUM).with {
+    model._class("org.meeuw.i18n.FormallyAssignedCountryCode", ClassType.ENUM).with {
         _implements(Region.class)
 
         javadoc()
@@ -43,8 +44,6 @@ void createClass(String path) {
             }
         }
 
-
-
         method(JMod.PUBLIC, String.class, "getName").with {
             annotate(Override.class)
             body()._return(name)
@@ -57,12 +56,10 @@ void createClass(String path) {
             javadoc().append("Returns the locale associated with this country. This may not always be possible, but many countries are associated with a language, and other locale specific settings")
         }
 
-        JMethod n = getMethod("name")
         method(JMod.PUBLIC, String.class, "getISO3166_3_Code").with {
-            body()._return(enumClass.staticInvoke())
+            body()._return(JExpr.direct("name()"))
+            javadoc().append("Returns the ISO 3166-3 code for this formal country")
         }
-
-
 
         method(JMod.PUBLIC, Region.Type.class, "getType").with {
             annotate(Override.class)
