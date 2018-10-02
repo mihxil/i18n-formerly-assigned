@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/mihxil/i18n-formally-assigned.svg?)](https://travis-ci.org/mihxil/i18n-formally-assigned)
-[![Maven Central](https://img.shields.io/maven-central/v/org.meeuw/i18n-formally-assigned.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22org.meeuw%22)
+[![Build Status](https://travis-ci.org/mihxil/i18n-formerly-assigned.svg?)](https://travis-ci.org/mihxil/i18n-formally-assigned)
+[![Maven Central](https://img.shields.io/maven-central/v/org.meeuw/i18n-formerly-assigned.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22org.meeuw%22)
 
 # i18n-formerly-assigned
 
@@ -10,3 +10,4 @@ The idea is to use this in conjuction with [neovisionaries nv-i18n](https://gith
 
 
 
+Snapshot builds can be found https://oss.sonatype.org/content/repositories/snapshots/org/meeuw/i18n-formerly-assigned
