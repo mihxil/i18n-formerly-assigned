@@ -2,6 +2,7 @@ import com.google.common.collect.Range
 import com.sun.codemodel.internal.*
 
 import java.time.Year
+import java.util.regex.Pattern
 
 void createClass(String path) {
     def parser = new XmlSlurper(false, false, true)
@@ -114,7 +115,10 @@ void createClass(String path) {
                     JInvocation asList = model.ref(Arrays.class)
                             .staticInvoke("asList")
                     it.td[1].span.each {
-                        asList.arg(it.text())
+                        String code = it.text()
+                        if (Pattern.compile("(?i)^[a-z0-9]+\$").matcher(code).matches()) {
+                            asList.arg(code)
+                        }
                     } // former codes
 
                     enumConstant(th0).with {
