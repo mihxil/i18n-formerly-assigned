@@ -11,11 +11,9 @@ void createClass(String path) {
 
     JCodeModel model = new JCodeModel()
 
-    JClass region = model.ref("com.neovisionaries.i18n.Region")
-    JClass regionType = model.ref("com.neovisionaries.i18n.Region.Type")
+
 
     model._class("org.meeuw.i18n.FormerlyAssignedCountryCode", ClassType.ENUM).with {
-        _implements(region)
 
         javadoc()
                 .append("This class is automaticly generated from " + url)
@@ -30,6 +28,7 @@ void createClass(String path) {
 
         JClass year = model.ref(Year.class)
         JClass range = model.ref(Range.class).narrow(year)
+        JClass thisClass = model.ref("FormerlyAssignedCountryCode");
 
         JFieldVar validity = field(JMod.PRIVATE | JMod.FINAL, range, "validity")
 
@@ -45,13 +44,11 @@ void createClass(String path) {
         }
 
         method(JMod.PUBLIC, String.class, "getName").with {
-            annotate(Override.class)
             body()._return(name)
             javadoc().append("Returns the name of this region (in english)")
 
         }
         method(JMod.PUBLIC, Locale.class, "toLocale").with {
-            annotate(Override.class)
             body()._return(locale)
             javadoc().append("Returns the locale associated with this country. This may not always be possible, but many countries are associated with a language, and other locale specific settings")
         }
@@ -61,11 +58,7 @@ void createClass(String path) {
             javadoc().append("Returns the ISO 3166-3 code for this formal country")
         }
 
-        method(JMod.PUBLIC, regionType, "getType").with {
-            annotate(Override.class)
-            body()._return(regionType.staticRef("COUNTRY"))
-            javadoc().append("All formally assigned countries are {@link Region.Type.COUNTRY}")
-        }
+
         /*method(JMod.PUBLIC, Currency.class, "getCurrency").with {
             annotate(Override.class)
             body()._return(currency)
@@ -79,6 +72,27 @@ void createClass(String path) {
         method(JMod.PUBLIC, range, "getValidity").with {
             body()._return(validity)
         }
+
+        method(JMod.PUBLIC | JMod.STATIC, thisClass, "getByCode").with {
+            param(String.class, "code")
+            body().directStatement("""
+            for (FormerlyAssignedCountryCode proposal : values()) {
+               if(proposal.name().equals(code)) {
+                  return proposal;
+               } 
+               
+            }
+            for (FormerlyAssignedCountryCode proposal : values()) {
+               for (String formerCode : proposal.getFormerCodes()) {
+                  if(formerCode.equals(code)) {
+                     return proposal;
+                   }
+               }                
+            }
+            return null;
+""");
+        }
+
         println "Slurping " + url + " table "
         int table = 0
         html.depthFirst().each {
