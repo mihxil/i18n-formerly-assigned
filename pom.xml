@@ -43,7 +43,7 @@
     <connection>scm:git:git://github.com/mihxil/i18n-formerly-assigned.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/mihxil/i18n-formerly-assigned.git</developerConnection>
     <url>https://github.com/mihxil/i18n-formerly-assigned</url>
-    <tag>HEAD</tag>
+    <tag>0.1-SNAPSHOT</tag>
   </scm>
 
 
