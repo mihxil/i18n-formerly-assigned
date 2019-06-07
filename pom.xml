@@ -7,6 +7,8 @@
   <version>0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>i18n-formerly-assigned</name>
+  <description>Provides an enum with ISO 3166-3 codes</description>
+  <url>https://github.com/mihxil/i18n-formerly-assigned</url>
 
   <licenses>
     <license>
@@ -22,7 +24,7 @@
       <id>mihxil</id>
       <name>Michiel Meeuwissen</name>
       <email>michiel.meeuwissen+github@gmail.com</email>
-      <url>http://www.meeuw.org</url>
+      <url>https://meeuw.org</url>
       <roles>
         <role>architect</role>
         <role>developer</role>
