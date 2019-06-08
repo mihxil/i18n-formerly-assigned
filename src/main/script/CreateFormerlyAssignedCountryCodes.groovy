@@ -74,6 +74,7 @@ void createClass(String path) {
         }
 
         method(JMod.PUBLIC | JMod.STATIC, thisClass, "getByCode").with {
+            javadoc().append("Gets by the former country by its 4 letter code. It will also try to match by the original 2 codes. This may not be unique, and then the most recently assigned one will match")
             param(String.class, "code")
             body().directStatement("""
             for (FormerlyAssignedCountryCode proposal : values()) {
@@ -82,14 +83,16 @@ void createClass(String path) {
                } 
                
             }
-            for (FormerlyAssignedCountryCode proposal : values()) {
-               for (String formerCode : proposal.getFormerCodes()) {
-                  if(formerCode.equals(code)) {
-                     return proposal;
+            Year until = Year.of(1);
+            FormerlyAssignedCountryCode proposal = null;
+            for (FormerlyAssignedCountryCode v : values()) {
+               for (String formerCode : v.getFormerCodes()) {
+                  if(formerCode.equals(code) & v.getValidity().upperEndpoint().isAfter(until)) {                    
+                     proposal = v;
                    }
                }                
             }
-            return null;
+            return proposal;
 """);
         }
 
@@ -101,7 +104,7 @@ void createClass(String path) {
             }
 
             if (table == 1 && it.name() == 'tr') {
-                String td0 = it.td[0].text(); // name
+                String td0 = it.td[0].a[0].text(); // name
                 String td0id = it.td[0].'@id'.text()
 
                 if (td0id != null && td0id.length() > 0) {
