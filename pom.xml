@@ -35,7 +35,6 @@
 
 
   <properties>
-    <nv-i18n.version>1.25</nv-i18n.version>
     <junit.version>4.12</junit.version>
     <mockito.version>2.28.2</mockito.version>
     <groovy.version>2.5.7</groovy.version>
@@ -50,13 +49,7 @@
 
 
   <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.neovisionaries</groupId>
-        <artifactId>nv-i18n</artifactId>
-        <version>${nv-i18n.version}</version>
-      </dependency>
-    </dependencies>
+
   </dependencyManagement>
 
 
@@ -75,21 +68,23 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.neovisionaries</groupId>
-      <artifactId>nv-i18n</artifactId>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>27.1-jre</version>
     </dependency>
-    <dependency>
+    <!--
+     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-xml</artifactId>
       <version>${groovy.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>27.1-jre</version>
+      <groupId>org.kohsuke.codemodel</groupId>
+      <artifactId>codemodel</artifactId>
+      <version>2.7</version>
     </dependency>
+     -->
   </dependencies>
-
 
   <build>
     <defaultGoal>install</defaultGoal>
