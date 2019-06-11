@@ -1,5 +1,5 @@
-import com.google.common.collect.Range
 import com.sun.codemodel.*
+
 import java.time.Year
 import java.util.regex.Pattern
 
@@ -27,10 +27,10 @@ void createClass(String path) {
         JFieldVar formerCodes = field(JMod.PRIVATE | JMod.FINAL, stringList, "formerCodes")
 
         JClass year = model.ref(Year.class)
-        JClass range = model.ref(Range.class).narrow(year)
-        JClass thisClass = model.ref("FormerlyAssignedCountryCode");
+        JClass rangeClass = model.ref("ValidityRange")
+        JClass thisClass = model.ref("FormerlyAssignedCountryCode")
 
-        JFieldVar validity = field(JMod.PRIVATE | JMod.FINAL, range, "validity")
+        JFieldVar validity = field(JMod.PRIVATE | JMod.FINAL, rangeClass, "validity")
 
 
         constructor(JMod.PRIVATE).with {
@@ -39,7 +39,7 @@ void createClass(String path) {
                 assign(JExpr._this().ref(locale), param(Locale.class, "locale"))
                 //assign(JExpr._this().ref(currency), param(Currency.class, "currency"))
                 assign(JExpr._this().ref(formerCodes), param(stringList, "formerCodes"))
-                assign(JExpr._this().ref(validity), param(range, "validity"))
+                assign(JExpr._this().ref(validity), param(rangeClass, "validity"))
             }
         }
 
@@ -69,7 +69,7 @@ void createClass(String path) {
             javadoc().append("Returns a list of all official codes this country <em>used to have</em>")
         }
 
-        method(JMod.PUBLIC, range, "getValidity").with {
+        method(JMod.PUBLIC, rangeClass, "getValidity").with {
             body()._return(validity)
         }
 
@@ -128,8 +128,7 @@ void createClass(String path) {
                         //arg(JExpr._null())
                         arg(JExpr._null())
                         arg(asList)
-
-                        arg(model.ref(Range.class).staticInvoke("closed")
+                        arg(rangeClass.staticInvoke("closed")
                                 .arg(year.staticInvoke("of").arg(JExpr.lit(year1)))
                                 .arg(year.staticInvoke("of").arg(JExpr.lit(year2)))
                         )
