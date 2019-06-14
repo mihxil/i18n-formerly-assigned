@@ -8,35 +8,30 @@ import java.time.Year;
  */
 public class ValidityRange {
 
-    private final Year from;
+    private final Year lowerEndpoint;
 
-    private final Year to;
+    private final Year upperEndpoint;
 
     public static ValidityRange closed(Year from, Year to) {
         return new ValidityRange(from, to);
     }
 
-    public ValidityRange(Year from, Year to) {
-        this.from = from;
-        this.to = to;
+    public ValidityRange(Year lowerEndpoint, Year upperEndpoint) {
+        this.lowerEndpoint= lowerEndpoint;
+        this.upperEndpoint = upperEndpoint;
     }
-
-
-    public Year getFrom() {
-        return from;
-    }
-
-    public Year getTo() {
-        return to;
-    }
-
 
     public Year upperEndpoint() {
-        return getTo();
+        return upperEndpoint;
     }
 
     public Year lowerEndpoint() {
-        return getFrom();
+        return lowerEndpoint;
+    }
+
+    public boolean contains(Year year) {
+        return (lowerEndpoint == null || ! lowerEndpoint.isAfter(year)) &&
+                (upperEndpoint == null || ! upperEndpoint.isBefore(year));
     }
 }
 
