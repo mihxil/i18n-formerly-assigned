@@ -47,13 +47,6 @@
     <tag>HEAD</tag>
   </scm>
 
-
-  <dependencyManagement>
-
-  </dependencyManagement>
-
-
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
