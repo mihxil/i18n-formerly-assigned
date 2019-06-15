@@ -1,6 +1,6 @@
 language: java
 jdk:
-- oraclejdk8
+- openjdk8
 sudo: false
 
 env:
@@ -12,4 +12,3 @@ script: mvn clean test install
 
 after_success:
 - mvn -Pdeploy deploy --settings travis-settings.xml -DskipTests=true -Dgpg.skip=true  -B
-
