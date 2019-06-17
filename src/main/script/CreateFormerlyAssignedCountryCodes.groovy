@@ -13,7 +13,7 @@ void createClass(String path) {
 
 
 
-    model._class("org.meeuw.i18n.FormerlyAssignedCountryCode", ClassType.ENUM).with {
+    model._class("org.meeuw.i18n.formerlyassigned.FormerlyAssignedCountryCode", ClassType.ENUM).with {
 
         javadoc()
                 .append("This class is automaticly generated from " + url)
