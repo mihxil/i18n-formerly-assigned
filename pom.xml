@@ -4,7 +4,7 @@
 
   <groupId>org.meeuw.i18n</groupId>
   <artifactId>i18n-formerly-assigned</artifactId>
-  <version>0.5</version>
+  <version>0.6-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>i18n-formerly-assigned</name>
   <description>Provides an enum with ISO 3166-3 codes</description>
@@ -44,7 +44,7 @@
     <connection>scm:git:git://github.com/mihxil/i18n-formerly-assigned.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/mihxil/i18n-formerly-assigned.git</developerConnection>
     <url>https://github.com/mihxil/i18n-formerly-assigned</url>
-    <tag>0.5</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <dependencies>
