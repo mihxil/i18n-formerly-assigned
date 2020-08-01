@@ -16,7 +16,7 @@ void createClass(String path) {
     model._class("org.meeuw.i18n.formerlyassigned.FormerlyAssignedCountryCode", ClassType.ENUM).with {
 
         javadoc()
-                .append("This class is automaticly generated from " + url)
+                .append("This class is automaticly generated from <a href='" + url +"'>" + url + "</a>.")
                 .append("It defines all known <a href='https://www.iso.org/standard/63547.html'>ISO 3166-3</a> codes for former countries")
 
         JFieldVar name = field(JMod.PRIVATE | JMod.FINAL, String.class, "nameInEnglish")
@@ -132,7 +132,7 @@ void createClass(String path) {
                 } // former codes
 
                 enumConstant(th0).with {
-                    javadoc().append("See <a href='" + url + "'#" + td0id + "'>" + td0 + "</a> (" + td3 +")")
+                    javadoc().append("<a href='" + url + "#" + td0id + "'>" + td0 + "</a> (" + td3 +")")
                     arg(JExpr.lit(td0))
                     //arg(JExpr._null())
                     arg(JExpr._null())
