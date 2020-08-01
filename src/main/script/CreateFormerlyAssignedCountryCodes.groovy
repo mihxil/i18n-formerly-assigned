@@ -55,7 +55,7 @@ void createClass(String path) {
 
         method(JMod.PUBLIC, String.class, "getISO3166_3_Code").with {
             body()._return(JExpr.direct("name()"))
-            javadoc().append("Returns the ISO 3166-3 code for this formal country")
+            javadoc().append("Returns the ISO 3166-3 code for this former country")
         }
 
 
