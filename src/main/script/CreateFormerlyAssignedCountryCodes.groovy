@@ -1,13 +1,13 @@
 import com.sun.codemodel.*
+import org.jsoup.Jsoup
 
 import java.time.Year
 import java.util.regex.Pattern
 
 void createClass(String path) {
-    def parser = new XmlSlurper(false, false, true)
-    def url = "https://en.wikipedia.org/wiki/ISO_3166-3"
-    def html = parser.parse(url)
 
+    def url = "https://en.wikipedia.org/wiki/ISO_3166-3"
+    def html =  Jsoup.parse(new URL(url), 10000)
 
     JCodeModel model = new JCodeModel()
 
@@ -97,45 +97,53 @@ void createClass(String path) {
         }
 
         println "Slurping " + url + " table "
-        int table = 0
-        html.depthFirst().each {
-            if (it.name() == 'table') {
+        table = 0
+        html.body().select("table, tr").each {
+            if (it.nodeName() == 'table') {
                 table++
+                return
             }
+            if ( table != 1) {
+                return
+            }
+            def tds = it.select("td")
+            if (tds.size() == 0) {
+                return
+            }
+            def ths = it.select("th")
 
-            if (table == 1 && it.name() == 'tr') {
-                String td0 = it.td[0].a[0].text(); // name
-                String td0id = it.td[0].'@id'.text()
+            String td0 = tds[0].select("a")[0].text(); // name
+            String td0id = tds[0].id()
 
-                if (td0id != null && td0id.length() > 0) {
-                    String[] td2 = it.td[2].text().trim().split("[^\\d]", 3) // validity
-                    Integer year1 = Integer.parseInt(td2[0]);
-                    Integer year2 = Integer.parseInt(td2[1]);
-                    String th0 = it.th[0].span.text() // code
-                    String td3 = it.td[3].text()  // new country name
+            if (td0id != null && td0id.length() > 0) {
+                String[] td2 = tds[2].text().trim().split("[^\\d]", 3) // validity
+                Integer year1 = Integer.parseInt(td2[0]);
+                Integer year2 = Integer.parseInt(td2[1]);
+                String th0 = ths[0].select("span")[0].text() // code
+                String td3 = tds[3].text()  // new country name
 
-                    JInvocation asList = model.ref(Arrays.class)
-                            .staticInvoke("asList")
-                    it.td[1].span.each {
-                        String code = it.text()
-                        if (Pattern.compile("(?i)^[a-z0-9]+\$").matcher(code).matches()) {
-                            asList.arg(code)
-                        }
-                    } // former codes
-
-                    enumConstant(th0).with {
-                        arg(JExpr.lit(td0))
-                        //arg(JExpr._null())
-                        arg(JExpr._null())
-                        arg(asList)
-                        arg(rangeClass.staticInvoke("closed")
-                                .arg(year.staticInvoke("of").arg(JExpr.lit(year1)))
-                                .arg(year.staticInvoke("of").arg(JExpr.lit(year2)))
-                        )
+                JInvocation asList = model.ref(Arrays.class)
+                        .staticInvoke("asList")
+                tds[1].select("span").each {
+                    String code = it.text()
+                    if (Pattern.compile("(?i)^[a-z0-9]+\$").matcher(code).matches()) {
+                        asList.arg(code)
                     }
+                } // former codes
+
+                enumConstant(th0).with {
+                    arg(JExpr.lit(td0))
+                    //arg(JExpr._null())
+                    arg(JExpr._null())
+                    arg(asList)
+                    arg(rangeClass.staticInvoke("closed")
+                            .arg(year.staticInvoke("of").arg(JExpr.lit(year1)))
+                            .arg(year.staticInvoke("of").arg(JExpr.lit(year2)))
+                    )
                 }
             }
         }
+
         methods();
     }
 

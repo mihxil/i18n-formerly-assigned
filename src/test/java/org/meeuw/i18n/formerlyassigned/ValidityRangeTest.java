@@ -28,8 +28,7 @@ public class ValidityRangeTest {
 		assertThat(ValidityRange.to(Year.of(2019)).toString()).isEqualTo("- 2019");
 		assertThat(ValidityRange.from(Year.of(1973)).toString()).isEqualTo("1973 -");
 		assertThat(new ValidityRange(null, null).toString()).isEqualTo("");
-
-
-
 	}
+
+
 }
