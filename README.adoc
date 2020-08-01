@@ -1,14 +1,15 @@
-
-
-
 = i18n-formerly-assigned
+:toc:
 
 image:https://travis-ci.org/mihxil/i18n-formerly-assigned.svg?[Build Status,link=https://travis-ci.org/mihxil/i18n-formerly-assigned]
 image:https://img.shields.io/maven-central/v/org.meeuw.i18n/i18n-formerly-assigned.svg?label=Maven%20Central[Maven Central,link=https://search.maven.org/search?q=g:%22org.meeuw.i18n%22]
 image:https://img.shields.io/nexus/s/https/oss.sonatype.org/org.meeuw.i18n/i18n-formerly-assigned.svg[snapshots,link=https://oss.sonatype.org/content/repositories/staging/org/meeuw/i18n/]
 image:http://www.javadoc.io/badge/org.meeuw.i18n/i18n-formerly-assigned.svg?color=blue[javadoc,link=http://www.javadoc.io/doc/org.meeuw.i18n/i18n-formerly-assigned]
 
-This creates support for 'formerly assigned country codes'. See https://en.wikipedia.org/wiki/ISO_3166-3
+
+== Introduction
+
+This project creates support for 'formerly assigned country codes' (in the form of the enum `org.meeuw.i18n.formerlyassigned.FormerlyAssignedCountryCode` . See https://en.wikipedia.org/wiki/ISO_3166-3.
 
 The idea was to use this in conjuction with https://github.com/TakahikoKawasaki/nv-i18n[neovisionaries nv-i18n] which supports current country codes according to ISO 3166-1, and https://github.com/tobias-/i18n-subdivisions[i18n subdivisions] for support for subdivisions of countries according to ISO 3166-2.
 
@@ -16,4 +17,9 @@ This is now done via https://github.com/mihxil/i18n-regions[i18n regions].
 
 == Implementation
 
-The list of enums is created by scraping the concerning wikipedia page, using the groovy script in `src/main/scripts`
+The list of enums values is created by scraping the concerning wikipedia page, using the groovy script in `src/main/script`, which is called from the maven build.
+
+
+== Java version
+
+The artifact is compatible with java 8 and higher. Only  `module-info.class` is compiled with java target version 11.
