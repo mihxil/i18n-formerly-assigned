@@ -115,7 +115,7 @@ void createClass(String path) {
             String td0 = tds[0].select("a")[0].text(); // name
             String td0id = tds[0].id()
 
-            if (td0id != null && td0id.length() > 0) {
+            if (td0id.length() > 0) {
                 String[] td2 = tds[2].text().trim().split("[^\\d]", 3) // validity
                 Integer year1 = Integer.parseInt(td2[0]);
                 Integer year2 = Integer.parseInt(td2[1]);
@@ -132,6 +132,7 @@ void createClass(String path) {
                 } // former codes
 
                 enumConstant(th0).with {
+                    javadoc().append("See <a href='" + url + "'#" + td0id + "'>" + td0 + "</a> (" + td3 +")")
                     arg(JExpr.lit(td0))
                     //arg(JExpr._null())
                     arg(JExpr._null())
