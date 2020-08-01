@@ -59,7 +59,7 @@
       <artifactId>assertj-core</artifactId>
       <version>${assertj.version}</version>
       <scope>test</scope>
-     </dependency>
+    </dependency>
   </dependencies>
 
   <build>
@@ -68,7 +68,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -121,7 +121,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.0</version>
         <configuration>
           <archive>
             <manifestEntries>
@@ -162,11 +162,6 @@
         </executions>
         <dependencies>
           <dependency>
-            <groupId>com.github.olivergondza</groupId>
-            <artifactId>maven-jdk-tools-wrapper</artifactId>
-            <version>0.1</version>
-          </dependency>
-          <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
             <version>${groovy.version}</version>
@@ -175,6 +170,10 @@
             <groupId>org.kohsuke.codemodel</groupId>
             <artifactId>codemodel</artifactId>
             <version>2.7</version>
+            <!--
+            I tried to updated this to org.glassfish.jaxb:codemodel:3.0.0-M4
+            but it doesn't seem to be better. E.g. it seems to be impossible te create links in javadoc.
+            -->
           </dependency>
           <dependency>
             <groupId>org.jsoup</groupId>
@@ -219,7 +218,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
-            <version>3.0.1</version>
+            <version>3.2.1</version>
             <executions>
               <execution>
                 <id>attach-sources</id>
@@ -232,7 +231,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.0.1</version>
+            <version>3.2.0</version>
             <configuration>
               <additionalOptions>
                 <additionalOption>-Xdoclint:none</additionalOption>
