@@ -9,9 +9,9 @@ image:http://www.javadoc.io/badge/org.meeuw.i18n/i18n-formerly-assigned.svg?colo
 
 == Introduction
 
-This project creates support for 'formerly assigned country codes' (in the form of the enum `org.meeuw.i18n.formerlyassigned.FormerlyAssignedCountryCode` . See https://en.wikipedia.org/wiki/ISO_3166-3.
+This project creates support for 'formerly assigned country codes' (in the form of the enum `org.meeuw.i18n.formerlyassigned.FormerlyAssignedCountryCode` . See https://en.wikipedia.org/wiki/ISO_3166-3[ISO_3166-3]
 
-The idea was to use this in conjuction with https://github.com/TakahikoKawasaki/nv-i18n[neovisionaries nv-i18n] which supports current country codes according to ISO 3166-1, and https://github.com/tobias-/i18n-subdivisions[i18n subdivisions] for support for subdivisions of countries according to ISO 3166-2.
+The idea was to use this in conjuction with https://github.com/TakahikoKawasaki/nv-i18n[neovisionaries nv-i18n] which supports current country codes according to https://en.wikipedia.org/wiki/ISO_3166-1[ISO 3166-1], and https://github.com/tobias-/i18n-subdivisions[i18n subdivisions] with support for subdivisions of countries according to https://en.wikipedia.org/wiki/ISO_3166-2[ISO 3166-2].
 
 This is now done via https://github.com/mihxil/i18n-regions[i18n regions].
 
