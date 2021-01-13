@@ -19,6 +19,8 @@ This is now done via https://github.com/mihxil/i18n-regions[i18n regions].
 
 The list of enums values is created by scraping the concerning wikipedia page, using the groovy script in `src/main/script`, which is called from the maven build.
 
+Therefore the source code on github doesn't really help to browse the full list. The javadoc _would_, so please check the link above.
+
 
 == Java version
 
