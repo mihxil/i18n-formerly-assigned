@@ -35,10 +35,10 @@
 
 
   <properties>
-    <junit.version>5.8.2</junit.version>
-    <groovy.version>3.0.9</groovy.version>
+    <junit.version>5.9.0-RC1</junit.version>
+    <groovy.version>3.0.11</groovy.version>
     <java.version>8</java.version>
-    <assertj.version>3.21.0</assertj.version>
+    <assertj.version>3.23.1</assertj.version>
   </properties>
   <scm>
     <connection>scm:git:git://github.com/mihxil/i18n-formerly-assigned.git</connection>
@@ -84,9 +84,8 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.10.1</version>
         <executions>
           <execution>
             <id>default-compile</id>
@@ -119,9 +118,8 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.2.2</version>
         <configuration>
           <archive>
             <manifestEntries>
@@ -131,9 +129,8 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.3</version>
+        <version>3.0.0-M6</version>
         <configuration>
           <branchName>${project.version}</branchName>
           <tagNameFormat>@{project.version}</tagNameFormat>
@@ -178,7 +175,7 @@
           <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.14.3</version>
+            <version>1.15.2</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -193,7 +190,7 @@
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.6.8</version>
+            <version>1.6.13</version>
             <extensions>true</extensions>
             <configuration>
               <serverId>ossrh</serverId>
@@ -202,9 +199,8 @@
             </configuration>
           </plugin>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>3.01</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -216,7 +212,6 @@
             </executions>
           </plugin>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
             <version>3.2.1</version>
             <executions>
@@ -229,9 +224,8 @@
             </executions>
           </plugin>
           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.2.0</version>
+            <version>3.4.0</version>
             <configuration>
               <additionalOptions>
                 <additionalOption>-Xdoclint:none</additionalOption>
