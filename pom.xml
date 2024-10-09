@@ -35,10 +35,10 @@
 
 
   <properties>
-    <junit.version>5.10.1</junit.version>
+    <junit.version>5.11.2</junit.version>
     <groovy.version>4.0.15</groovy.version>
     <java.version>8</java.version>
-    <assertj.version>3.25.2</assertj.version>
+    <assertj.version>3.26.3</assertj.version>
   </properties>
   <scm>
     <connection>scm:git:git://github.com/mihxil/i18n-formerly-assigned.git</connection>
@@ -167,12 +167,12 @@
           <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>codemodel</artifactId>
-            <version>4.0.4</version>
+            <version>4.0.5</version>
           </dependency>
           <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.16.2</version>
+            <version>1.18.1</version>
           </dependency>
         </dependencies>
       </plugin>
