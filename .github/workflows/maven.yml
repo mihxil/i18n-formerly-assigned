@@ -33,7 +33,7 @@ jobs:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_SECRET_KEY_PASSPHRASE }}
-      - uses: codecov/codecov-action@4
+      - uses: codecov/codecov-action@v4
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
 
