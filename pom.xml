@@ -42,12 +42,14 @@
     <jacoco.version>0.8.13</jacoco.version>
 
   </properties>
+
   <scm>
-    <connection>scm:git:git://github.com/mihxil/i18n-formerly-assigned.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/mihxil/i18n-formerly-assigned.git</developerConnection>
+    <connection>scm:git:${project.scm.url}.git</connection>
+    <developerConnection>scm:git:${project.scm.url}.git</developerConnection>
     <url>https://github.com/mihxil/i18n-formerly-assigned</url>
     <tag>HEAD</tag>
   </scm>
+
 
   <dependencies>
     <dependency>
