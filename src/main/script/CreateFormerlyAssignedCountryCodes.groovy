@@ -1,4 +1,3 @@
-import com.sun.codemodel.*
 import org.jsoup.Jsoup
 
 import java.time.Year
@@ -80,17 +79,17 @@ void createClass(String path) {
             for (FormerlyAssignedCountryCode proposal : values()) {
                if(proposal.name().equals(code)) {
                   return proposal;
-               } 
-               
+               }
+
             }
             Year until = Year.of(1);
             FormerlyAssignedCountryCode proposal = null;
             for (FormerlyAssignedCountryCode v : values()) {
                for (String formerCode : v.getFormerCodes()) {
-                  if(formerCode.equals(code) & v.getValidity().upperEndpoint().isAfter(until)) {                    
+                  if(formerCode.equals(code) & v.getValidity().upperEndpoint().isAfter(until)) {
                      proposal = v;
                    }
-               }                
+               }
             }
             return proposal;
 """);
