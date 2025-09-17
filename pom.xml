@@ -35,10 +35,10 @@
 
 
   <properties>
-    <junit.version>5.11.4</junit.version>
+    <junit.version>5.13.4</junit.version>
     <groovy.version>4.0.15</groovy.version>
     <java.version>8</java.version>
-    <assertj.version>3.27.3</assertj.version>
+    <assertj.version>3.27.4</assertj.version>
     <jacoco.version>0.8.13</jacoco.version>
 
   </properties>
@@ -186,7 +186,7 @@
           <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.21.1</version>
+            <version>1.21.2</version>
           </dependency>
         </dependencies>
       </plugin>
