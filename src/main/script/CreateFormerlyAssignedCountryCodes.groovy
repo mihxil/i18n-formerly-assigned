@@ -151,16 +151,13 @@ void createClass(String path) {
 
     File dir = new File(path)
     dir.mkdirs()
-
+	  println "creating in " + dir
     try {
         model.build(dir)
     } catch (Exception e) {
         println e
     }
 }
-String path = properties['path']
-if (path == null) {
-    path = "/tmp"
-}
+
 
 createClass(path)
