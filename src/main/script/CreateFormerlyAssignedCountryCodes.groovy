@@ -2,6 +2,8 @@ import org.jsoup.Jsoup
 
 import java.time.Year
 import java.util.regex.Pattern
+import com.sun.codemodel.*
+
 
 void createClass(String path) {
 
