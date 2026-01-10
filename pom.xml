@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.meeuw.i18n</groupId>
@@ -35,8 +35,8 @@
 
 
   <properties>
-    <junit.version>6.0.1</junit.version>
-    <groovy.version>5.0.2</groovy.version>
+    <junit.version>6.0.2</junit.version>
+    <groovy.version>5.0.3</groovy.version>
     <java.version>8</java.version>
     <assertj.version>3.27.6</assertj.version>
     <jacoco.version>0.8.14</jacoco.version>
@@ -72,7 +72,7 @@
       <plugin>
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
-        <version>0.9.0</version>
+        <version>0.10.0</version>
         <extensions>true</extensions>
         <configuration>
           <publishingServerId>central</publishingServerId>
@@ -180,12 +180,12 @@
           <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>codemodel</artifactId>
-            <version>4.0.5</version>
+            <version>4.0.6</version>
           </dependency>
           <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.21.2</version>
+            <version>1.22.1</version>
           </dependency>
         </dependencies>
       </plugin>
