@@ -36,7 +36,7 @@
 
   <properties>
     <junit.version>6.0.2</junit.version>
-    <groovy.version>5.0.3</groovy.version>
+    <groovy.version>5.0.5</groovy.version>
     <java.version>8</java.version>
     <assertj.version>3.27.7</assertj.version>
     <jacoco.version>0.8.14</jacoco.version>
@@ -100,7 +100,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.14.1</version>
+        <version>3.15.0</version>
         <executions>
           <execution>
             <id>default-compile</id>
@@ -134,7 +134,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.4.2</version>
+        <version>3.5.0</version>
         <configuration>
           <archive>
             <manifestEntries>
@@ -145,7 +145,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-release-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.3.1</version>
         <configuration>
           <branchName>${project.version}</branchName>
           <tagNameFormat>@{project.version}</tagNameFormat>
@@ -154,7 +154,7 @@
       <plugin>
          <groupId>org.codehaus.gmavenplus</groupId>
         <artifactId>gmavenplus-plugin</artifactId>
-        <version>4.2.1</version>
+        <version>4.3.1</version>
         <executions>
           <execution>
             <phase>generate-resources</phase>
@@ -180,7 +180,7 @@
           <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>codemodel</artifactId>
-            <version>4.0.6</version>
+            <version>4.0.7</version>
           </dependency>
           <dependency>
             <groupId>org.jsoup</groupId>
@@ -213,6 +213,15 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.21.0</version>
+        <configuration>
+          <rulesUri>file:///${maven.multiModuleProjectDirectory}/rules.xml</rulesUri>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 
@@ -236,7 +245,7 @@
           </plugin>
           <plugin>
             <artifactId>maven-source-plugin</artifactId>
-            <version>3.3.1</version>
+            <version>3.4.0</version>
             <executions>
               <execution>
                 <id>attach-sources</id>
