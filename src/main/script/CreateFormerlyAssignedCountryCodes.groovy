@@ -4,11 +4,10 @@ import java.time.Year
 import java.util.regex.Pattern
 import com.sun.codemodel.*
 
-
 void createClass(String path) {
 
     def url = "https://en.wikipedia.org/wiki/ISO_3166-3"
-    def html =  Jsoup.parse(new URL(url), 10000)
+    def html =  Jsoup.parse(URI.create(url).toURL(), 10000)
 
     JCodeModel model = new JCodeModel()
 
